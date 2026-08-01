@@ -58,7 +58,44 @@
 
         <button id="sunset-theme">Tropical Sunset</button>
       </section>
+      <!-- ========================================
+           CITY SELECTOR
+      ========================================= -->
 
+      <section class="city-selector">
+        <label for="city-select"> ✈️ Travel the World </label>
+
+        <select id="city-select">
+          <option value="">Select a city...</option>
+
+          <option value="Asia/Hong_Kong">🇭🇰 Hong Kong</option>
+
+          <option value="Africa/Johannesburg">🇿🇦 Cape Town</option>
+
+          <option value="America/Guyana">🇬🇾 Georgetown</option>
+
+          <option value="Europe/Tirane">🇦🇱 Tirana</option>
+
+          <option value="Africa/Algiers">🇩🇿 Constantine</option>
+
+          <option value="custom">🤔💭Explore somewhere new</option>
+        </select>
+
+        <div class="custom-location" id="custom-location">
+          <label for="custom-city"> What place comes to mind? </label>
+
+          <div class="custom-location-controls">
+            <input
+              type="text"
+              id="custom-city"
+              placeholder="Enter a city or place..."
+              autocomplete="off"
+            />
+
+            <button id="custom-city-button" type="button">Explore</button>
+          </div>
+        </div>
+      </section>
       <!-- ========================================
            CLOCK GRID
       ========================================= -->
@@ -69,9 +106,9 @@
         <article class="clock-card">
           <h2>📍 Your Local Time</h2>
 
-          <p class="date">Date</p>
+          <p class="date" id="local-date">Date</p>
 
-          <p class="time">Time</p>
+          <p class="time" id="local-time">Time</p>
         </article>
 
         <!-- Oxnard -->
