@@ -1,0 +1,200 @@
+/* ========================================
+   WORLD CLOCK — STYLE.CSS
+======================================== */
+
+/* ----------------------------------------
+   1. GLOBAL RESET
+---------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+
+  font-family: "Poppins", sans-serif;
+  color: #1f2937;
+
+  background: #eef2ff;
+}
+
+/* ----------------------------------------
+   2. MAIN APP CONTAINER
+---------------------------------------- */
+
+.world-clock {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+  padding: 32px;
+
+  background: #ffffff;
+
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(79, 70, 229, 0.14);
+}
+
+/* ----------------------------------------
+   3. HEADER
+---------------------------------------- */
+
+header {
+  margin-bottom: 28px;
+
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+}
+
+/* ----------------------------------------
+   4. THEME SELECTOR
+---------------------------------------- */
+
+.theme-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+
+  margin-bottom: 32px;
+}
+
+.theme-selector button {
+  padding: 11px 18px;
+
+  color: #4338ca;
+  background: #eef2ff;
+
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.theme-selector button:hover {
+  transform: translateY(-2px);
+  background: #e0e7ff;
+}
+
+/* ----------------------------------------
+   5. CLOCK GRID
+---------------------------------------- */
+
+.clock-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* ----------------------------------------
+   6. CLOCK CARDS
+---------------------------------------- */
+
+.clock-card {
+  padding: 24px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+
+  text-align: center;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.clock-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.clock-card h2 {
+  margin: 0 0 12px;
+
+  font-size: 21px;
+}
+
+.date {
+  margin: 0 0 8px;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.time {
+  margin: 0;
+
+  color: #312e81;
+
+  font-size: 32px;
+  font-weight: 800;
+}
+
+/* ----------------------------------------
+   7. FOOTER
+---------------------------------------- */
+
+footer {
+  margin-top: 30px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ----------------------------------------
+   8. RESPONSIVE DESIGN
+---------------------------------------- */
+
+@media (max-width: 650px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  .world-clock {
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .clock-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .time {
+    font-size: 28px;
+  }
+}

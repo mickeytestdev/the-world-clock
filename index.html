@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- ========================================
+         PAGE INFORMATION
+    ========================================= -->
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>World Clock</title>
+
+    <!-- ========================================
+         GOOGLE FONTS
+    ========================================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ========================================
+         STYLESHEET
+    ========================================= -->
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ========================================
+         WORLD CLOCK APP
+    ========================================= -->
+
+    <main class="world-clock">
+      <!-- ========================================
+           HEADER
+      ========================================= -->
+
+      <header>
+        <h1>🌍 World Clock</h1>
+
+        <p class="subtitle">A moment around the world</p>
+      </header>
+
+      <!-- ========================================
+           THEME SELECTOR
+      ========================================= -->
+
+      <section class="theme-selector">
+        <button id="default-theme">Default</button>
+
+        <button id="cyberpunk-theme">Cyberpunk</button>
+
+        <button id="sunset-theme">Tropical Sunset</button>
+      </section>
+
+      <!-- ========================================
+           CLOCK GRID
+      ========================================= -->
+
+      <section class="clock-grid">
+        <!-- Local -->
+
+        <article class="clock-card">
+          <h2>📍 Your Local Time</h2>
+
+          <p class="date">Date</p>
+
+          <p class="time">Time</p>
+        </article>
+
+        <!-- Oxnard -->
+
+        <article class="clock-card">
+          <h2>🇺🇸 Oxnard</h2>
+
+          <p class="date">Date</p>
+
+          <p class="time">Time</p>
+        </article>
+
+        <!-- Darkhan -->
+
+        <article class="clock-card">
+          <h2>🇲🇳 Darkhan</h2>
+
+          <p class="date">Date</p>
+
+          <p class="time">Time</p>
+        </article>
+
+        <!-- Adelaide -->
+
+        <article class="clock-card">
+          <h2>🇦🇺 Adelaide</h2>
+
+          <p class="date">Date</p>
+
+          <p class="time">Time</p>
+        </article>
+      </section>
+
+      <!-- ========================================
+           FOOTER
+      ========================================= -->
+
+      <footer>Built by Mickey • Powered by Moment.js</footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
