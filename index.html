@@ -100,9 +100,8 @@
            CLOCK GRID
       ========================================= -->
 
-      <section class="clock-grid">
+      <section class="clock-grid" id="default-clocks">
         <!-- Local -->
-
         <article class="clock-card">
           <h2 id="local-city">📍 Your Location</h2>
 
@@ -131,17 +130,28 @@
 
         <!-- Adelaide -->
         <article class="clock-card">
-  <h2>🇦🇺 Adelaide</h2>
+          <h2>🇦🇺 Adelaide</h2>
 
-  <p class="date" id="adelaide-date">
-    Date
-  </p>
+          <p class="date" id="adelaide-date">Date</p>
 
-  <p class="time" id="adelaide-time">
-    Time
-  </p>
-</article>
+          <p class="time" id="adelaide-time">Time</p>
+        </article>
+      </section>
 
+      <!-- ========================================
+     TRAVEL CLOCK
+========================================= -->
+      <section class="travel-clock" id="travel-clock" hidden>
+        <article class="clock-card travel-clock-card">
+          <h2 id="travel-city">Selected City</h2>
+
+          <p class="date" id="travel-date">Date</p>
+
+          <p class="time" id="travel-time">Time</p>
+
+          <button id="return-button" type="button">Return to all cities</button>
+        </article>
+      </section>
       <!-- ========================================
            FOOTER
       ========================================= -->

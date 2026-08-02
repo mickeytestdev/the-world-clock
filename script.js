@@ -1,7 +1,6 @@
 // ========================================
 // LOCAL CLOCK ENGINE
 // ========================================
-
 function updateLocalClock() {
   let localTimeZone = moment.tz.guess();
 
@@ -31,7 +30,6 @@ setInterval(updateLocalClock, 1000);
 // ========================================
 // OXNARD CLOCK ENGINE
 // ========================================
-
 function updateOxnardClock() {
   let oxnardTimeZone = "America/Los_Angeles";
 
@@ -83,7 +81,6 @@ setInterval(updateDarkhanClock, 1000);
 // ========================================
 // ADELAIDE CLOCK ENGINE
 // ========================================
-
 function updateAdelaideClock() {
   let adelaideTimeZone = "Australia/Adelaide";
 
@@ -108,3 +105,79 @@ function updateAdelaideClock() {
 updateAdelaideClock();
 
 setInterval(updateAdelaideClock, 1000);
+// ========================================
+// TRAVEL VIEW CONTROLS
+// ========================================
+let travelClockInterval;
+let citySelect = document.querySelector("#city-select");
+let defaultClocks = document.querySelector("#default-clocks");
+let travelClock = document.querySelector("#travel-clock");
+let returnButton = document.querySelector("#return-button");
+
+function updateTravelClock(timeZone, cityName) {
+  let travelDate = moment()
+    .tz(timeZone)
+    .format("dddd, MMMM D, YYYY");
+
+  let travelTime = moment()
+    .tz(timeZone)
+    .format("h:mm:ss A");
+
+  let travelCityElement =
+    document.querySelector("#travel-city");
+
+  let travelDateElement =
+    document.querySelector("#travel-date");
+
+  let travelTimeElement =
+    document.querySelector("#travel-time");
+
+  travelCityElement.innerHTML = cityName;
+  travelDateElement.innerHTML = travelDate;
+  travelTimeElement.innerHTML = travelTime;
+}
+
+function showTravelView(event) {
+  let selectedTimeZone = event.target.value;
+
+  if (
+    selectedTimeZone === "" ||
+    selectedTimeZone === "custom"
+  ) {
+    return;
+  }
+
+  let selectedCityName =
+    event.target.options[event.target.selectedIndex].text;
+
+  defaultClocks.hidden = true;
+  travelClock.hidden = false;
+
+  clearInterval(travelClockInterval);
+
+  updateTravelClock(
+    selectedTimeZone,
+    selectedCityName,
+  );
+
+  travelClockInterval = setInterval(
+    function () {
+      updateTravelClock(
+        selectedTimeZone,
+        selectedCityName,
+      );
+    },
+    1000,
+  );
+}
+
+function showDefaultClocks() {
+  clearInterval(travelClockInterval);
+
+  travelClock.hidden = true;
+  defaultClocks.hidden = false;
+
+  citySelect.value = "";
+}
+citySelect.addEventListener("change", showTravelView);
+returnButton.addEventListener("click", showDefaultClocks);
