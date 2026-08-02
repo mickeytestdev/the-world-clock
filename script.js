@@ -106,6 +106,33 @@ updateAdelaideClock();
 
 setInterval(updateAdelaideClock, 1000);
 // ========================================
+// ZANZIBAR CLOCK ENGINE
+// ========================================
+function updateZanzibarClock() {
+  let zanzibarTimeZone = "Africa/Dar_es_Salaam";
+
+  let zanzibarDate = moment()
+    .tz(zanzibarTimeZone)
+    .format("dddd, MMMM D, YYYY");
+
+  let zanzibarTime = moment()
+    .tz(zanzibarTimeZone)
+    .format("h:mm:ss A");
+
+  let zanzibarDateElement =
+    document.querySelector("#zanzibar-date");
+
+  let zanzibarTimeElement =
+    document.querySelector("#zanzibar-time");
+
+  zanzibarDateElement.innerHTML = zanzibarDate;
+  zanzibarTimeElement.innerHTML = zanzibarTime;
+}
+
+updateZanzibarClock();
+
+setInterval(updateZanzibarClock, 1000);
+// ========================================
 // TRAVEL VIEW CONTROLS
 // ========================================
 let travelClockInterval;
@@ -113,6 +140,10 @@ let citySelect = document.querySelector("#city-select");
 let defaultClocks = document.querySelector("#default-clocks");
 let travelClock = document.querySelector("#travel-clock");
 let returnButton = document.querySelector("#return-button");
+
+let customLocation = document.querySelector("#custom-location");
+let customCityInput = document.querySelector("#custom-city");
+let customCityButton = document.querySelector("#custom-city-button");
 
 function updateTravelClock(timeZone, cityName) {
   let travelDate = moment()
@@ -140,12 +171,19 @@ function updateTravelClock(timeZone, cityName) {
 function showTravelView(event) {
   let selectedTimeZone = event.target.value;
 
-  if (
-    selectedTimeZone === "" ||
-    selectedTimeZone === "custom"
-  ) {
+  if (selectedTimeZone === "") {
+    customLocation.classList.remove("visible");
+    showDefaultClocks();
     return;
   }
+
+  if (selectedTimeZone === "custom") {
+    customLocation.classList.add("visible");
+    customCityInput.focus();
+    return;
+  }
+
+  customLocation.classList.remove("visible");
 
   let selectedCityName =
     event.target.options[event.target.selectedIndex].text;
@@ -177,7 +215,42 @@ function showDefaultClocks() {
   travelClock.hidden = true;
   defaultClocks.hidden = false;
 
+  customLocation.classList.remove("visible");
+  customCityInput.value = "";
   citySelect.value = "";
+}
+
+function handleCustomLocation() {
+  let customCityName = customCityInput.value.trim();
+
+  if (customCityName === "") {
+    alert("Please enter a city or place.");
+    return;
+  }
+
+  clearInterval(travelClockInterval);
+
+  customLocation.classList.remove("visible");
+  defaultClocks.hidden = true;
+  travelClock.hidden = false;
+
+  let travelCityElement =
+    document.querySelector("#travel-city");
+
+  let travelDateElement =
+    document.querySelector("#travel-date");
+
+  let travelTimeElement =
+    document.querySelector("#travel-time");
+
+  travelCityElement.innerHTML = `📍 ${customCityName}`;
+  travelDateElement.innerHTML = "Location received";
+  travelTimeElement.innerHTML = "Time zone lookup coming next";
 }
 citySelect.addEventListener("change", showTravelView);
 returnButton.addEventListener("click", showDefaultClocks);
+
+customCityButton.addEventListener(
+  "click",
+  handleCustomLocation,
+);
