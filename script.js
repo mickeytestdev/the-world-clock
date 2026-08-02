@@ -220,19 +220,17 @@ function showDefaultClocks() {
   citySelect.value = "";
 }
 
-function handleCustomLocation() {
-  let customCityName = customCityInput.value.trim();
+function displayCustomLocation(response) {
+  let confirmedCity = response.data.city;
+  let confirmedCountry = response.data.country;
 
-  if (customCityName === "") {
-    alert("Please enter a city or place.");
+  if (!confirmedCity || !confirmedCountry) {
+    alert(
+      "Sorry, we could not find that location. Please check the spelling and try again.",
+    );
+
     return;
   }
-
-  clearInterval(travelClockInterval);
-
-  customLocation.classList.remove("visible");
-  defaultClocks.hidden = true;
-  travelClock.hidden = false;
 
   let travelCityElement =
     document.querySelector("#travel-city");
@@ -243,10 +241,43 @@ function handleCustomLocation() {
   let travelTimeElement =
     document.querySelector("#travel-time");
 
-  travelCityElement.innerHTML = `📍 ${customCityName}`;
-  travelDateElement.innerHTML = "Location received";
-  travelTimeElement.innerHTML = "Time zone lookup coming next";
+  customLocation.classList.remove("visible");
+  defaultClocks.hidden = true;
+  travelClock.hidden = false;
+
+  travelCityElement.innerHTML =
+    `📍 ${confirmedCity}, ${confirmedCountry}`;
+
+  travelDateElement.innerHTML =
+    "Location found";
+
+  travelTimeElement.innerHTML =
+    "Live time coming in GOAT Edition";
 }
+
+function handleCustomLocation() {
+  let customCityName = customCityInput.value.trim();
+
+  if (customCityName === "") {
+    alert("Please enter a city or place.");
+    return;
+  }
+
+  clearInterval(travelClockInterval);
+
+  let apiKey = "530bfbaa583a1c4f65f472e27t9dbeo8";
+
+  let apiUrl =
+    `https://api.shecodes.io/weather/v1/current` +
+    `?query=${encodeURIComponent(customCityName)}` +
+    `&key=${apiKey}`;
+
+  axios
+    .get(apiUrl)
+    .then(displayCustomLocation)
+    .catch(handleCustomLocationError);
+}
+
 citySelect.addEventListener("change", showTravelView);
 returnButton.addEventListener("click", showDefaultClocks);
 
