@@ -154,10 +154,22 @@ h1 {
 /* ----------------------------------------
   6. CUSTOM LOCATION INPUT
 ---------------------------------------- */
+.custom-location > label {
+  display: block;
+  margin-bottom: 14px;
+
+  color: #475569;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .custom-location {
   display: none;
 
   margin-top: 14px;
+
+  text-align: center;
 }
 
 .custom-location.visible {
@@ -166,12 +178,14 @@ h1 {
 
 .custom-location-controls {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .custom-location input {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
+  max-width: 420px;
 
   padding: 13px 16px;
 
@@ -192,6 +206,8 @@ h1 {
 }
 
 .custom-location button {
+  width: 180px;
+  align-self: center;
   padding: 13px 18px;
 
   color: #ffffff;
