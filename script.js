@@ -238,7 +238,7 @@ function displayCustomLocation(response) {
   let confirmedTimeZone = confirmedLocation.timezone;
 
   let confirmedCityName =
-    `📍 ${confirmedCity}, ${confirmedCountry}`;
+    `🌟 ${confirmedCity}, ${confirmedCountry}`;
 
   customLocation.classList.remove("visible");
   defaultClocks.hidden = true;
