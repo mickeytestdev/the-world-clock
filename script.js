@@ -221,10 +221,9 @@ function showDefaultClocks() {
 }
 
 function displayCustomLocation(response) {
-  let confirmedCity = response.data.city;
-  let confirmedCountry = response.data.country;
+  let locationResults = response.data.results;
 
-  if (!confirmedCity || !confirmedCountry) {
+  if (!locationResults || locationResults.length === 0) {
     alert(
       "Sorry, we could not find that location. Please check the spelling and try again.",
     );
@@ -232,27 +231,35 @@ function displayCustomLocation(response) {
     return;
   }
 
-  let travelCityElement =
-    document.querySelector("#travel-city");
+  let confirmedLocation = locationResults[0];
 
-  let travelDateElement =
-    document.querySelector("#travel-date");
+  let confirmedCity = confirmedLocation.name;
+  let confirmedCountry = confirmedLocation.country;
+  let confirmedTimeZone = confirmedLocation.timezone;
 
-  let travelTimeElement =
-    document.querySelector("#travel-time");
+  let confirmedCityName =
+    `📍 ${confirmedCity}, ${confirmedCountry}`;
 
   customLocation.classList.remove("visible");
   defaultClocks.hidden = true;
   travelClock.hidden = false;
 
-  travelCityElement.innerHTML =
-    `📍 ${confirmedCity}, ${confirmedCountry}`;
+  clearInterval(travelClockInterval);
 
-  travelDateElement.innerHTML =
-    "Location found";
+  updateTravelClock(
+    confirmedTimeZone,
+    confirmedCityName,
+  );
 
-  travelTimeElement.innerHTML =
-    "Live time coming in GOAT Edition";
+  travelClockInterval = setInterval(
+    function () {
+      updateTravelClock(
+        confirmedTimeZone,
+        confirmedCityName,
+      );
+    },
+    1000,
+  );
 }
 
 function handleCustomLocation() {
@@ -265,12 +272,12 @@ function handleCustomLocation() {
 
   clearInterval(travelClockInterval);
 
-  let apiKey = "530bfbaa583a1c4f65f472e27t9dbeo8";
-
-  let apiUrl =
-    `https://api.shecodes.io/weather/v1/current` +
-    `?query=${encodeURIComponent(customCityName)}` +
-    `&key=${apiKey}`;
+let apiUrl =
+  `https://geocoding-api.open-meteo.com/v1/search` +
+  `?name=${encodeURIComponent(customCityName)}` +
+  `&count=1` +
+  `&language=en` +
+  `&format=json`;
 
   axios
     .get(apiUrl)
