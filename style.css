@@ -507,36 +507,110 @@ h1 {
 /* ----------------------------------------
    11. FOOTER
 ---------------------------------------- */
+/* ----------------------------------------
+   11. FOOTER
+---------------------------------------- */
 footer {
-  margin-top: 30px;
+  margin: 0;
+  padding: 18px;
 
-  color: #64748b;
+  color: #6f8e92;
 
-  font-size: 13px;
+  border-top: 1px solid #2c5960;
+
+  font-size: 12px;
   text-align: center;
 }
 /* ----------------------------------------
    12. RESPONSIVE DESIGN
 ---------------------------------------- */
+
 @media (max-width: 650px) {
   body {
-    padding: 20px 12px;
+    padding: 12px;
   }
 
   .world-clock {
+    width: 100%;
+
+    padding: 0;
+
+    border-radius: 0;
+  }
+
+  header {
     padding: 24px 18px;
-    border-radius: 22px;
   }
 
   h1 {
     font-size: 30px;
   }
 
+  .theme-selector {
+    grid-template-columns: 1fr;
+
+    width: calc(100% - 36px);
+  }
+
+  .theme-selector button {
+    border-right: none;
+    border-bottom: 1px solid #3a6d73;
+  }
+
+  .theme-selector button:last-child {
+    border-bottom: none;
+  }
+
+  .city-selector {
+    margin: 24px auto 28px;
+    padding: 0 18px;
+  }
+
   .clock-grid {
     grid-template-columns: 1fr;
   }
 
-  .time {
-    font-size: 28px;
+  .clock-grid .clock-card:not(.local-clock-card) {
+    gap: 16px;
+
+    padding: 20px 18px;
+  }
+
+  .clock-grid .clock-card:not(.local-clock-card) h2 {
+    font-size: 13px;
+  }
+
+  .clock-grid .clock-card:not(.local-clock-card) .time {
+    font-size: 21px;
+  }
+
+  .clock-card.local-clock-card {
+    padding: 42px 18px;
+  }
+
+  .clock-card.local-clock-card::before,
+  .clock-card.local-clock-card::after {
+    display: none;
+  }
+
+  .clock-card.local-clock-card .time {
+    font-size: clamp(34px, 11vw, 48px);
+  }
+
+  .travel-clock {
+    padding: 32px 18px;
+  }
+
+  .clock-card.travel-clock-card {
+    padding: 32px 18px;
+  }
+
+  .clock-card.travel-clock-card .time {
+    font-size: clamp(34px, 11vw, 46px);
+  }
+
+  footer {
+    margin-top: 0;
+    padding: 18px;
   }
 }
