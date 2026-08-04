@@ -262,6 +262,14 @@ function displayCustomLocation(response) {
   );
 }
 
+function handleCustomLocationError(error) {
+  console.error("Custom location search failed:", error);
+
+  alert(
+    "Sorry, we could not complete the location search. Please try again.",
+  );
+}
+
 function handleCustomLocation() {
   let customCityName = customCityInput.value.trim();
 

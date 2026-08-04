@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -40,11 +40,12 @@
       <!-- ========================================
            HEADER
       ========================================= -->
-
       <header>
-        <h1>🌍 World Clock</h1>
+        <p class="terminal-label">International Time System</p>
 
-        <p class="subtitle">A moment around the world</p>
+        <h1>The World Clock Terminal</h1>
+
+        <p class="subtitle">Live moments across the globe</p>
       </header>
 
       <!-- ========================================
@@ -52,7 +53,7 @@
       ========================================= -->
 
       <section class="theme-selector">
-        <button id="default-theme">Default</button>
+        <button id="default-theme" class="active-theme">Default</button>
 
         <button id="cyberpunk-theme">Cyberpunk</button>
 
@@ -104,9 +105,9 @@
         <article class="clock-card local-clock-card">
           <h2 id="local-city">📍 Your Location</h2>
 
-          <p class="date" id="local-date">Date</p>
-
           <p class="time" id="local-time">Time</p>
+
+          <p class="date" id="local-date">Date</p>
         </article>
 
         <!-- Oxnard -->
@@ -151,13 +152,17 @@
 ========================================= -->
       <section class="travel-clock" id="travel-clock" hidden>
         <article class="clock-card travel-clock-card">
+          <p class="travel-label">Current Destination</p>
+
           <h2 id="travel-city">Selected City</h2>
 
           <p class="date" id="travel-date">Date</p>
 
           <p class="time" id="travel-time">Time</p>
 
-          <button id="return-button" type="button">Return to all cities</button>
+          <button id="return-button" type="button">
+            ← Return to all cities
+          </button>
         </article>
       </section>
       <!-- ========================================

@@ -16,99 +16,135 @@
 body {
   min-height: 100vh;
   margin: 0;
-  padding: 40px 20px;
+  padding: 32px 16px;
 
-  font-family: "Poppins", sans-serif;
-  color: #1f2937;
+  color: #edf6f5;
+  background:
+    radial-gradient(circle at top, rgba(30, 104, 106, 0.25), transparent 42%),
+    #071419;
 
-  background: #eef2ff;
+  font-family: "Space Grotesk", sans-serif;
 }
-
+button,
+input,
+select {
+  font: inherit;
+}
 /* ----------------------------------------
    2. MAIN APP CONTAINER
 ---------------------------------------- */
 .world-clock {
   width: 100%;
-  max-width: 900px;
+  max-width: 980px;
 
   margin: 0 auto;
-  padding: 32px;
 
-  background: #ffffff;
+  background: rgba(10, 29, 35, 0.97);
 
-  border-radius: 28px;
-  box-shadow: 0 24px 60px rgba(79, 70, 229, 0.14);
+  border: 1px solid #2c5960;
+
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
-
 /* ----------------------------------------
    3. HEADER
 ---------------------------------------- */
+
 header {
-  margin-bottom: 28px;
+  padding: 30px;
 
   text-align: center;
+
+  border-bottom: 1px solid #2c5960;
+}
+
+.terminal-label {
+  margin: 0 0 8px;
+
+  color: #7cc7c5;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 h1 {
   margin: 0;
 
-  font-size: 36px;
-  font-weight: 800;
+  color: #f4fbfa;
+
+  font-size: clamp(30px, 5vw, 42px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .subtitle {
   margin: 8px 0 0;
 
-  color: #64748b;
+  color: #91aeb2;
 
   font-size: 15px;
 }
-
 /* ----------------------------------------
    4. THEME SELECTOR
 ---------------------------------------- */
-.theme-selector {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
 
-  margin-bottom: 32px;
+.theme-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  width: min(560px, calc(100% - 40px));
+
+  margin: 22px auto 0;
+
+  border: 1px solid #3a6d73;
 }
 
 .theme-selector button {
-  padding: 11px 18px;
+  padding: 11px 12px;
 
-  color: #4338ca;
-  background: #eef2ff;
+  color: #a9c3c5;
+  background: transparent;
 
-  border: 1px solid #c7d2fe;
-  border-radius: 999px;
+  border: none;
+  border-right: 1px solid #3a6d73;
 
-  font-family: inherit;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
 
   cursor: pointer;
 
   transition:
-    transform 0.2s ease,
+    color 0.2s ease,
     background 0.2s ease;
 }
 
-.theme-selector button:hover {
-  transform: translateY(-2px);
-  background: #e0e7ff;
+.theme-selector button:last-child {
+  border-right: none;
 }
 
+.theme-selector button:hover {
+  color: #f4fbfa;
+  background: rgba(138, 210, 207, 0.07);
+}
+
+.theme-selector .active-theme {
+  color: #061316;
+  background: #8ad2cf;
+}
 /* ----------------------------------------
    5. CITY SELECTOR
 ---------------------------------------- */
 .city-selector {
   width: 100%;
-  max-width: 560px;
+  max-width: 700px;
 
-  margin: 36px auto 42px;
+  margin: 26px auto 30px;
+  padding: 0 24px;
 
   text-align: center;
 }
@@ -116,27 +152,27 @@ h1 {
 .city-selector > label {
   display: block;
 
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 
-  color: #334155;
+  color: #d9ecea;
 
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .city-selector select {
   width: 100%;
-  padding: 14px 18px;
+  padding: 13px 15px;
 
-  color: #1f2937;
-  background: #ffffff;
+  color: #eaf5f4;
+  background: #0c2228;
 
-  border: 1px solid #c7d2fe;
-  border-radius: 14px;
+  border: 1px solid #3a6d73;
   outline: none;
 
-  font-family: inherit;
-  font-size: 15px;
+  font-size: 14px;
 
   cursor: pointer;
 
@@ -146,28 +182,22 @@ h1 {
 }
 
 .city-selector select:focus {
-  border-color: #6366f1;
+  border-color: #8ad2cf;
 
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+  box-shadow: 0 0 0 3px rgba(138, 210, 207, 0.13);
 }
 
+.city-selector option {
+  color: #eaf5f4;
+  background: #0c2228;
+}
 /* ----------------------------------------
-  6. CUSTOM LOCATION INPUT
+   6. CUSTOM LOCATION INPUT
 ---------------------------------------- */
-.custom-location > label {
-  display: block;
-  margin-bottom: 14px;
-
-  color: #475569;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-}
-
 .custom-location {
   display: none;
 
-  margin-top: 14px;
+  margin-top: 20px;
 
   text-align: center;
 }
@@ -176,129 +206,306 @@ h1 {
   display: block;
 }
 
+.custom-location > label {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: #bcd1d2;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .custom-location-controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .custom-location input {
   width: 100%;
-  max-width: 420px;
+  max-width: 430px;
+  padding: 13px 15px;
 
-  padding: 13px 16px;
+  color: #edf6f5;
+  background: #091c22;
 
-  color: #1f2937;
-  background: #ffffff;
-
-  border: 1px solid #c7d2fe;
-  border-radius: 14px;
+  border: 1px solid #3a6d73;
   outline: none;
 
-  font-family: inherit;
   font-size: 15px;
 }
 
+.custom-location input::placeholder {
+  color: #66868a;
+}
+
 .custom-location input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+  border-color: #8ad2cf;
+
+  box-shadow: 0 0 0 3px rgba(138, 210, 207, 0.13);
 }
 
 .custom-location button {
-  width: 180px;
-  align-self: center;
-  padding: 13px 18px;
+  min-width: 180px;
+  padding: 12px 18px;
 
-  color: #ffffff;
-  background: #4f46e5;
+  color: #061316;
+  background: #8ad2cf;
 
-  border: none;
-  border-radius: 14px;
+  border: 1px solid #8ad2cf;
 
-  font-family: inherit;
-  font-weight: 600;
+  font-weight: 700;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-@media (max-width: 500px) {
-  .custom-location-controls {
-    flex-direction: column;
-  }
+.custom-location button:hover {
+  background: #a2dfdc;
+}
 
-  .custom-location button {
-    width: 100%;
-  }
+.custom-location button:active {
+  transform: translateY(1px);
 }
 /* ----------------------------------------
    7. TRAVEL CLOCK
 ---------------------------------------- */
-.travel-clock-card {
-  max-width: 560px;
+.travel-clock {
+  padding: 42px 30px;
+
+  border-top: 1px solid #2c5960;
+}
+
+.clock-card.travel-clock-card {
+  width: 100%;
+  max-width: 650px;
+
   margin: 0 auto;
+  padding: 36px 28px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    180deg,
+    rgba(22, 74, 79, 0.38),
+    rgba(10, 29, 35, 0.4)
+  );
+
+  border: 1px solid #3a6d73;
+}
+
+.travel-label {
+  margin: 0 0 12px;
+
+  color: #7cc7c5;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.clock-card.travel-clock-card h2 {
+  margin: 0 0 16px;
+
+  color: #eef8f7;
+
+  font-size: 24px;
+  text-align: center;
+  text-transform: none;
+}
+
+.clock-card.travel-clock-card .time {
+  margin: 10px 0 0;
+
+  color: #fff7dd;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(38px, 8vw, 54px);
+  font-weight: 700;
+  text-align: center;
+}
+
+.clock-card.travel-clock-card .date {
+  margin: 12px 0 0;
+
+  color: #9ab6b9;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  text-align: center;
+}
+
+#return-button {
+  margin-top: 24px;
+  padding: 11px 17px;
+
+  color: #bcd7d7;
+  background: transparent;
+
+  border: 1px solid #3a6d73;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#return-button:hover {
+  color: #061316;
+  background: #8ad2cf;
+  border-color: #8ad2cf;
 }
 /* ----------------------------------------
    8. CLOCK GRID
 ---------------------------------------- */
 .clock-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
+  grid-template-columns: 1fr;
 
-.local-clock-card {
-  grid-column: 1 / -1;
+  border-top: 1px solid #2c5960;
 }
 /* ----------------------------------------
-   9. CLOCK CARDS
+   9. LOCAL HERO CLOCK
 ---------------------------------------- */
-.clock-card {
-  padding: 24px;
+.clock-card.local-clock-card {
+  position: relative;
 
-  background: #f8fafc;
+  grid-column: 1 / -1;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 22px;
+  padding: 48px 30px;
 
   text-align: center;
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  background: linear-gradient(
+    180deg,
+    rgba(22, 74, 79, 0.34),
+    rgba(10, 29, 35, 0)
+  );
+
+  border-right: none;
+  border-bottom: 1px solid #2c5960;
+}
+
+.clock-card.local-clock-card::before,
+.clock-card.local-clock-card::after {
+  position: absolute;
+  top: 28px;
+
+  width: 17%;
+
+  border-top: 1px solid #3a6d73;
+
+  content: "";
+}
+
+.clock-card.local-clock-card::before {
+  left: 30px;
+}
+
+.clock-card.local-clock-card::after {
+  right: 30px;
+}
+
+.clock-card.local-clock-card h2 {
+  margin: 0 0 14px;
+
+  color: #8ad2cf;
+
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.clock-card.local-clock-card .time {
+  margin: 0;
+
+  color: #fff7dd;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(40px, 8vw, 58px);
+  font-weight: 700;
+  text-align: center;
+}
+
+.clock-card.local-clock-card .date {
+  margin: 12px 0 0;
+
+  color: #9ab6b9;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  text-align: center;
+}
+/* ----------------------------------------
+   10. WORLD CLOCK PANELS
+---------------------------------------- */
+.clock-card {
+  padding: 25px 30px;
+
+  background: transparent;
+
+  border: none;
+  border-bottom: 1px solid #2c5960;
+  border-radius: 0;
+
+  text-align: left;
+
+  transition: background 0.2s ease;
 }
 
 .clock-card:hover {
-  transform: translateY(-4px);
-
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+  background: rgba(138, 210, 207, 0.05);
 }
 
-.clock-card h2 {
-  margin: 0 0 12px;
+.clock-grid .clock-card:not(.local-clock-card) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
 
-  font-size: 21px;
+  flex-wrap: nowrap;
+
+  border-right: none;
 }
 
-.date {
-  margin: 0 0 8px;
-
-  color: #64748b;
-
-  font-size: 14px;
-}
-
-.time {
+.clock-grid .clock-card:not(.local-clock-card) h2 {
   margin: 0;
 
-  color: #312e81;
+  min-width: 0;
+  flex: 1;
 
-  font-size: 32px;
-  font-weight: 800;
+  color: #dceceb;
+
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
+.clock-grid .clock-card:not(.local-clock-card) .date {
+  display: none;
+}
+
+.clock-grid .clock-card:not(.local-clock-card) .time {
+  margin: 0;
+
+  text-align: right;
+  white-space: nowrap;
+}
 /* ----------------------------------------
-   10. FOOTER
+   11. FOOTER
 ---------------------------------------- */
 footer {
   margin-top: 30px;
@@ -308,9 +515,8 @@ footer {
   font-size: 13px;
   text-align: center;
 }
-
 /* ----------------------------------------
-   11. RESPONSIVE DESIGN
+   12. RESPONSIVE DESIGN
 ---------------------------------------- */
 @media (max-width: 650px) {
   body {
