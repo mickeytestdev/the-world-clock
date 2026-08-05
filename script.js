@@ -293,6 +293,80 @@ let apiUrl =
     .catch(handleCustomLocationError);
 }
 
+// ========================================
+// THEME ENGINE
+// ========================================
+let defaultThemeButton =
+  document.querySelector("#default-theme");
+
+let cyberpunkThemeButton =
+  document.querySelector("#cyberpunk-theme");
+
+let sunsetThemeButton =
+  document.querySelector("#sunset-theme");
+
+function updateActiveThemeButton(activeButton) {
+  defaultThemeButton.classList.remove("active-theme");
+  cyberpunkThemeButton.classList.remove("active-theme");
+  sunsetThemeButton.classList.remove("active-theme");
+
+  activeButton.classList.add("active-theme");
+}
+
+function applyDefaultTheme() {
+  document.body.classList.remove(
+    "cyberpunk-theme",
+    "sunset-theme",
+  );
+
+  updateActiveThemeButton(defaultThemeButton);
+
+  localStorage.setItem("worldClockTheme", "default");
+}
+
+function applyCyberpunkTheme() {
+  document.body.classList.remove("sunset-theme");
+  document.body.classList.add("cyberpunk-theme");
+
+  updateActiveThemeButton(cyberpunkThemeButton);
+
+  localStorage.setItem(
+    "worldClockTheme",
+    "cyberpunk",
+  );
+}
+
+function applySunsetTheme() {
+  document.body.classList.remove("cyberpunk-theme");
+  document.body.classList.add("sunset-theme");
+
+  updateActiveThemeButton(sunsetThemeButton);
+
+  localStorage.setItem(
+    "worldClockTheme",
+    "sunset",
+  );
+}
+
+function loadSavedTheme() {
+  let savedTheme =
+    localStorage.getItem("worldClockTheme");
+
+  if (savedTheme === "cyberpunk") {
+    applyCyberpunkTheme();
+    return;
+  }
+
+  if (savedTheme === "sunset") {
+    applySunsetTheme();
+    return;
+  }
+
+  applyDefaultTheme();
+}
+// ========================================
+// EVENT LISTENERS
+// ========================================
 citySelect.addEventListener("change", showTravelView);
 returnButton.addEventListener("click", showDefaultClocks);
 
@@ -300,3 +374,20 @@ customCityButton.addEventListener(
   "click",
   handleCustomLocation,
 );
+
+defaultThemeButton.addEventListener(
+  "click",
+  applyDefaultTheme,
+);
+
+cyberpunkThemeButton.addEventListener(
+  "click",
+  applyCyberpunkTheme,
+);
+
+sunsetThemeButton.addEventListener(
+  "click",
+  applySunsetTheme,
+);
+
+loadSavedTheme();

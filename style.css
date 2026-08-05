@@ -1,10 +1,237 @@
 /* ========================================
-   WORLD CLOCK — STYLE.CSS
+   WORLD CLOCK TERMINAL — STYLE.CSS
 ======================================== */
 
 /* ----------------------------------------
+   THEME COLOR SYSTEM
+---------------------------------------- */
+
+:root {
+  --page-background:
+    radial-gradient(circle at top, rgba(30, 104, 106, 0.25), transparent 42%),
+    #071419;
+
+  --app-background: rgba(10, 29, 35, 0.97);
+
+  --primary-text: #edf6f5;
+  --heading-text: #f4fbfa;
+  --secondary-text: #91aeb2;
+  --muted-text: #839fa3;
+
+  --accent: #8ad2cf;
+  --accent-soft: #7cc7c5;
+  --accent-dark: #061316;
+
+  --time-primary: #fff7dd;
+  --time-secondary: #f4d98b;
+
+  --border: #2c5960;
+  --border-strong: #3a6d73;
+
+  --input-background: #0c2228;
+  --input-dark: #091c22;
+  --placeholder-text: #66868a;
+
+  --panel-hover: rgba(138, 210, 207, 0.05);
+  --button-hover: #a2dfdc;
+
+  --hero-background: linear-gradient(
+    180deg,
+    rgba(22, 74, 79, 0.34),
+    rgba(10, 29, 35, 0)
+  );
+
+  --travel-background: linear-gradient(
+    180deg,
+    rgba(22, 74, 79, 0.38),
+    rgba(10, 29, 35, 0.4)
+  );
+
+  --focus-shadow: rgba(138, 210, 207, 0.13);
+  --theme-hover: rgba(138, 210, 207, 0.07);
+}
+/* ----------------------------------------
+   CYBERPUNK THEME
+---------------------------------------- */
+body.cyberpunk-theme {
+  --page-background:
+    radial-gradient(circle at 20% 0%, rgba(0, 245, 255, 0.2), transparent 30%),
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(255, 79, 216, 0.22),
+      transparent 28%
+    ),
+    linear-gradient(135deg, #05030d, #0c0619 45%, #070b16);
+
+  --app-background: rgba(11, 5, 24, 0.96);
+
+  --primary-text: #f8f5ff;
+  --heading-text: #ffffff;
+  --secondary-text: #c9bdd8;
+  --muted-text: #8f82a3;
+
+  --accent: #00f5ff;
+  --accent-soft: #ff4fd8;
+  --accent-dark: #06030d;
+
+  --time-primary: #ffffff;
+  --time-secondary: #ffe76a;
+
+  --border: #391553;
+  --border-strong: #9c36c9;
+
+  --input-background: #140821;
+  --input-dark: #0d0418;
+  --placeholder-text: #82728f;
+
+  --panel-hover: rgba(0, 245, 255, 0.07);
+  --button-hover: #6afaff;
+
+  --hero-background: linear-gradient(
+    180deg,
+    rgba(255, 79, 216, 0.15),
+    rgba(0, 245, 255, 0.025)
+  );
+
+  --travel-background: linear-gradient(
+    180deg,
+    rgba(0, 245, 255, 0.13),
+    rgba(255, 79, 216, 0.065)
+  );
+
+  --focus-shadow: rgba(0, 245, 255, 0.22);
+  --theme-hover: rgba(255, 79, 216, 0.11);
+}
+
+/* ----------------------------------------
+   TROPICAL SUNSET THEME
+---------------------------------------- */
+
+body.sunset-theme {
+  --page-background:
+    radial-gradient(circle at top, rgba(255, 185, 90, 0.28), transparent 34%),
+    linear-gradient(180deg, #3b1740, #6f2957 48%, #21142f);
+
+  --app-background: rgba(58, 23, 64, 0.95);
+
+  --primary-text: #fff7ef;
+  --heading-text: #fffaf4;
+  --secondary-text: #e9c4b5;
+  --muted-text: #c89da8;
+
+  --accent: #ffb55e;
+  --accent-soft: #ff7d7d;
+  --accent-dark: #351425;
+
+  --time-primary: #fff6d2;
+  --time-secondary: #ffc86c;
+
+  --border: #8c4c73;
+  --border-strong: #c9718d;
+
+  --input-background: #4b2148;
+  --input-dark: #351536;
+  --placeholder-text: #c89da8;
+
+  --panel-hover: rgba(255, 181, 94, 0.08);
+  --button-hover: #ffc982;
+
+  --hero-background: linear-gradient(
+    180deg,
+    rgba(255, 125, 125, 0.18),
+    rgba(255, 181, 94, 0.03)
+  );
+
+  --travel-background: linear-gradient(
+    180deg,
+    rgba(255, 181, 94, 0.15),
+    rgba(111, 41, 87, 0.18)
+  );
+
+  --focus-shadow: rgba(255, 181, 94, 0.2);
+  --theme-hover: rgba(255, 125, 125, 0.1);
+}
+
+/* ----------------------------------------
+   THEME-SPECIFIC EFFECTS
+---------------------------------------- */
+body.cyberpunk-theme .world-clock {
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.6),
+    0 0 45px rgba(0, 245, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+body.cyberpunk-theme .terminal-label {
+  text-shadow: 0 0 12px rgba(255, 79, 216, 0.45);
+}
+
+body.cyberpunk-theme h1 {
+  text-shadow:
+    0 0 12px rgba(0, 245, 255, 0.2),
+    0 0 24px rgba(255, 79, 216, 0.12);
+}
+
+body.cyberpunk-theme .theme-selector {
+  box-shadow: 0 0 20px rgba(156, 54, 201, 0.12);
+}
+
+body.cyberpunk-theme .theme-selector .active-theme {
+  box-shadow:
+    inset 0 0 16px rgba(255, 255, 255, 0.18),
+    0 0 18px rgba(0, 245, 255, 0.35);
+}
+
+body.cyberpunk-theme .clock-card.local-clock-card h2 {
+  text-shadow: 0 0 12px rgba(0, 245, 255, 0.35);
+}
+
+body.cyberpunk-theme .clock-card.local-clock-card .time,
+body.cyberpunk-theme .clock-card.travel-clock-card .time {
+  text-shadow:
+    0 0 16px rgba(0, 245, 255, 0.2),
+    0 0 30px rgba(255, 79, 216, 0.08);
+}
+
+body.cyberpunk-theme .clock-card:hover {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+body.cyberpunk-theme .custom-location button {
+  box-shadow: 0 0 18px rgba(0, 245, 255, 0.25);
+}
+
+body.cyberpunk-theme .custom-location button:hover {
+  box-shadow: 0 0 26px rgba(0, 245, 255, 0.42);
+}
+
+body.sunset-theme .world-clock {
+  box-shadow:
+    0 30px 80px rgba(20, 5, 24, 0.42),
+    0 0 38px rgba(255, 181, 94, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+body.sunset-theme .terminal-label {
+  text-shadow: 0 0 12px rgba(255, 125, 125, 0.25);
+}
+
+body.sunset-theme h1 {
+  text-shadow: 0 0 18px rgba(255, 181, 94, 0.12);
+}
+
+body.sunset-theme .theme-selector .active-theme {
+  box-shadow: 0 0 18px rgba(255, 181, 94, 0.22);
+}
+
+body.sunset-theme .clock-card.local-clock-card .time,
+body.sunset-theme .clock-card.travel-clock-card .time {
+  text-shadow: 0 0 16px rgba(255, 181, 94, 0.13);
+}
+/* ----------------------------------------
    1. GLOBAL RESET
 ---------------------------------------- */
+
 * {
   box-sizing: border-box;
 }
@@ -18,35 +245,37 @@ body {
   margin: 0;
   padding: 32px 16px;
 
-  color: #edf6f5;
-  background:
-    radial-gradient(circle at top, rgba(30, 104, 106, 0.25), transparent 42%),
-    #071419;
+  color: var(--primary-text);
+  background: var(--page-background);
 
   font-family: "Space Grotesk", sans-serif;
 }
+
 button,
 input,
 select {
   font: inherit;
 }
+
 /* ----------------------------------------
    2. MAIN APP CONTAINER
 ---------------------------------------- */
+
 .world-clock {
   width: 100%;
   max-width: 980px;
 
   margin: 0 auto;
 
-  background: rgba(10, 29, 35, 0.97);
+  background: var(--app-background);
 
-  border: 1px solid #2c5960;
+  border: 1px solid var(--border);
 
   box-shadow:
     0 28px 80px rgba(0, 0, 0, 0.42),
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
+
 /* ----------------------------------------
    3. HEADER
 ---------------------------------------- */
@@ -56,13 +285,13 @@ header {
 
   text-align: center;
 
-  border-bottom: 1px solid #2c5960;
+  border-bottom: 1px solid var(--border);
 }
 
 .terminal-label {
   margin: 0 0 8px;
 
-  color: #7cc7c5;
+  color: var(--accent-soft);
 
   font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
@@ -74,7 +303,7 @@ header {
 h1 {
   margin: 0;
 
-  color: #f4fbfa;
+  color: var(--heading-text);
 
   font-size: clamp(30px, 5vw, 42px);
   font-weight: 700;
@@ -85,10 +314,11 @@ h1 {
 .subtitle {
   margin: 8px 0 0;
 
-  color: #91aeb2;
+  color: var(--secondary-text);
 
   font-size: 15px;
 }
+
 /* ----------------------------------------
    4. THEME SELECTOR
 ---------------------------------------- */
@@ -101,17 +331,17 @@ h1 {
 
   margin: 22px auto 0;
 
-  border: 1px solid #3a6d73;
+  border: 1px solid var(--border-strong);
 }
 
 .theme-selector button {
   padding: 11px 12px;
 
-  color: #a9c3c5;
+  color: var(--secondary-text);
   background: transparent;
 
   border: none;
-  border-right: 1px solid #3a6d73;
+  border-right: 1px solid var(--border-strong);
 
   font-size: 12px;
   font-weight: 600;
@@ -128,17 +358,19 @@ h1 {
 }
 
 .theme-selector button:hover {
-  color: #f4fbfa;
-  background: rgba(138, 210, 207, 0.07);
+  color: var(--heading-text);
+  background: var(--theme-hover);
 }
 
 .theme-selector .active-theme {
-  color: #061316;
-  background: #8ad2cf;
+  color: var(--accent-dark);
+  background: var(--accent);
 }
+
 /* ----------------------------------------
    5. CITY SELECTOR
 ---------------------------------------- */
+
 .city-selector {
   width: 100%;
   max-width: 700px;
@@ -154,7 +386,7 @@ h1 {
 
   margin-bottom: 12px;
 
-  color: #d9ecea;
+  color: var(--primary-text);
 
   font-size: 13px;
   font-weight: 700;
@@ -166,10 +398,10 @@ h1 {
   width: 100%;
   padding: 13px 15px;
 
-  color: #eaf5f4;
-  background: #0c2228;
+  color: var(--primary-text);
+  background: var(--input-background);
 
-  border: 1px solid #3a6d73;
+  border: 1px solid var(--border-strong);
   outline: none;
 
   font-size: 14px;
@@ -182,18 +414,20 @@ h1 {
 }
 
 .city-selector select:focus {
-  border-color: #8ad2cf;
+  border-color: var(--accent);
 
-  box-shadow: 0 0 0 3px rgba(138, 210, 207, 0.13);
+  box-shadow: 0 0 0 3px var(--focus-shadow);
 }
 
 .city-selector option {
-  color: #eaf5f4;
-  background: #0c2228;
+  color: var(--primary-text);
+  background: var(--input-background);
 }
+
 /* ----------------------------------------
    6. CUSTOM LOCATION INPUT
 ---------------------------------------- */
+
 .custom-location {
   display: none;
 
@@ -211,7 +445,7 @@ h1 {
 
   margin-bottom: 14px;
 
-  color: #bcd1d2;
+  color: var(--secondary-text);
 
   font-size: 16px;
   font-weight: 600;
@@ -229,33 +463,33 @@ h1 {
   max-width: 430px;
   padding: 13px 15px;
 
-  color: #edf6f5;
-  background: #091c22;
+  color: var(--primary-text);
+  background: var(--input-dark);
 
-  border: 1px solid #3a6d73;
+  border: 1px solid var(--border-strong);
   outline: none;
 
   font-size: 15px;
 }
 
 .custom-location input::placeholder {
-  color: #66868a;
+  color: var(--placeholder-text);
 }
 
 .custom-location input:focus {
-  border-color: #8ad2cf;
+  border-color: var(--accent);
 
-  box-shadow: 0 0 0 3px rgba(138, 210, 207, 0.13);
+  box-shadow: 0 0 0 3px var(--focus-shadow);
 }
 
 .custom-location button {
   min-width: 180px;
   padding: 12px 18px;
 
-  color: #061316;
-  background: #8ad2cf;
+  color: var(--accent-dark);
+  background: var(--accent);
 
-  border: 1px solid #8ad2cf;
+  border: 1px solid var(--accent);
 
   font-weight: 700;
 
@@ -267,19 +501,21 @@ h1 {
 }
 
 .custom-location button:hover {
-  background: #a2dfdc;
+  background: var(--button-hover);
 }
 
 .custom-location button:active {
   transform: translateY(1px);
 }
+
 /* ----------------------------------------
    7. TRAVEL CLOCK
 ---------------------------------------- */
+
 .travel-clock {
   padding: 42px 30px;
 
-  border-top: 1px solid #2c5960;
+  border-top: 1px solid var(--border);
 }
 
 .clock-card.travel-clock-card {
@@ -291,19 +527,15 @@ h1 {
 
   text-align: center;
 
-  background: linear-gradient(
-    180deg,
-    rgba(22, 74, 79, 0.38),
-    rgba(10, 29, 35, 0.4)
-  );
+  background: var(--travel-background);
 
-  border: 1px solid #3a6d73;
+  border: 1px solid var(--border-strong);
 }
 
 .travel-label {
   margin: 0 0 12px;
 
-  color: #7cc7c5;
+  color: var(--accent-soft);
 
   font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
@@ -315,7 +547,7 @@ h1 {
 .clock-card.travel-clock-card h2 {
   margin: 0 0 16px;
 
-  color: #eef8f7;
+  color: var(--heading-text);
 
   font-size: 24px;
   text-align: center;
@@ -325,7 +557,7 @@ h1 {
 .clock-card.travel-clock-card .time {
   margin: 10px 0 0;
 
-  color: #fff7dd;
+  color: var(--time-primary);
 
   font-family: "IBM Plex Mono", monospace;
   font-size: clamp(38px, 8vw, 54px);
@@ -336,7 +568,7 @@ h1 {
 .clock-card.travel-clock-card .date {
   margin: 12px 0 0;
 
-  color: #9ab6b9;
+  color: var(--secondary-text);
 
   font-family: "IBM Plex Mono", monospace;
   font-size: 13px;
@@ -347,10 +579,10 @@ h1 {
   margin-top: 24px;
   padding: 11px 17px;
 
-  color: #bcd7d7;
+  color: var(--secondary-text);
   background: transparent;
 
-  border: 1px solid #3a6d73;
+  border: 1px solid var(--border-strong);
 
   font-weight: 600;
 
@@ -363,22 +595,26 @@ h1 {
 }
 
 #return-button:hover {
-  color: #061316;
-  background: #8ad2cf;
-  border-color: #8ad2cf;
+  color: var(--accent-dark);
+  background: var(--accent);
+  border-color: var(--accent);
 }
+
 /* ----------------------------------------
    8. CLOCK GRID
 ---------------------------------------- */
+
 .clock-grid {
   display: grid;
   grid-template-columns: 1fr;
 
-  border-top: 1px solid #2c5960;
+  border-top: 1px solid var(--border);
 }
+
 /* ----------------------------------------
    9. LOCAL HERO CLOCK
 ---------------------------------------- */
+
 .clock-card.local-clock-card {
   position: relative;
 
@@ -388,14 +624,10 @@ h1 {
 
   text-align: center;
 
-  background: linear-gradient(
-    180deg,
-    rgba(22, 74, 79, 0.34),
-    rgba(10, 29, 35, 0)
-  );
+  background: var(--hero-background);
 
   border-right: none;
-  border-bottom: 1px solid #2c5960;
+  border-bottom: 1px solid var(--border);
 }
 
 .clock-card.local-clock-card::before,
@@ -405,7 +637,7 @@ h1 {
 
   width: 17%;
 
-  border-top: 1px solid #3a6d73;
+  border-top: 1px solid var(--border-strong);
 
   content: "";
 }
@@ -421,7 +653,7 @@ h1 {
 .clock-card.local-clock-card h2 {
   margin: 0 0 14px;
 
-  color: #8ad2cf;
+  color: var(--accent);
 
   font-size: 15px;
   letter-spacing: 0.14em;
@@ -432,7 +664,7 @@ h1 {
 .clock-card.local-clock-card .time {
   margin: 0;
 
-  color: #fff7dd;
+  color: var(--time-primary);
 
   font-family: "IBM Plex Mono", monospace;
   font-size: clamp(40px, 8vw, 58px);
@@ -443,51 +675,53 @@ h1 {
 .clock-card.local-clock-card .date {
   margin: 12px 0 0;
 
-  color: #9ab6b9;
+  color: var(--secondary-text);
 
   font-family: "IBM Plex Mono", monospace;
   font-size: 13px;
   text-align: center;
 }
+
 /* ----------------------------------------
    10. WORLD CLOCK PANELS
 ---------------------------------------- */
+
 .clock-card {
   padding: 25px 30px;
 
   background: transparent;
 
   border: none;
-  border-bottom: 1px solid #2c5960;
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
 
   text-align: left;
 
-  transition: background 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .clock-card:hover {
-  background: rgba(138, 210, 207, 0.05);
+  background: var(--panel-hover);
 }
 
 .clock-grid .clock-card:not(.local-clock-card) {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-
-  flex-wrap: nowrap;
 
   border-right: none;
 }
 
 .clock-grid .clock-card:not(.local-clock-card) h2 {
+  flex: 1;
+  min-width: 0;
   margin: 0;
 
-  min-width: 0;
-  flex: 1;
-
-  color: #dceceb;
+  color: var(--primary-text);
 
   font-size: 15px;
   letter-spacing: 0.08em;
@@ -501,26 +735,31 @@ h1 {
 .clock-grid .clock-card:not(.local-clock-card) .time {
   margin: 0;
 
+  color: var(--time-secondary);
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 27px;
+  font-weight: 700;
   text-align: right;
   white-space: nowrap;
 }
+
 /* ----------------------------------------
    11. FOOTER
 ---------------------------------------- */
-/* ----------------------------------------
-   11. FOOTER
----------------------------------------- */
+
 footer {
   margin: 0;
   padding: 18px;
 
-  color: #6f8e92;
+  color: var(--muted-text);
 
-  border-top: 1px solid #2c5960;
+  border-top: 1px solid var(--border);
 
   font-size: 12px;
   text-align: center;
 }
+
 /* ----------------------------------------
    12. RESPONSIVE DESIGN
 ---------------------------------------- */
@@ -554,7 +793,7 @@ footer {
 
   .theme-selector button {
     border-right: none;
-    border-bottom: 1px solid #3a6d73;
+    border-bottom: 1px solid var(--border-strong);
   }
 
   .theme-selector button:last-child {
